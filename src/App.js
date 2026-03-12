@@ -307,7 +307,7 @@ function GameCard({ game, onSelect, isSelected }) {
   const buckets = buildBuckets(game.keyEvents);
   const score   = excScore(buckets);
 
-  const statusColor = game.status==="inprogress"?"#00ff88":game.status==="final"?"#555":"#4488ff";
+  const statusColor = game.status==="inprogress"?"#00ff88":game.status==="final"?"#a0a0a0":"#4488ff";
   const statusLabel = game.status==="inprogress"
     ? `● ${game.liveMinute||"LIVE"}`
     : game.status==="final" ? "FT"
@@ -452,10 +452,10 @@ function DetailPanel({ game, onClose }) {
             background:"rgba(255,255,255,0.03)", borderRadius:7, padding:"7px 11px" }}>
             <span style={{ fontSize:15 }}>{icon[ev.type]||"•"}</span>
             <div>
-              <div style={{ fontSize:11, color:"#ccc", fontWeight:600 }}>
+              <div style={{ fontSize:11, color:"#e8e8e8", fontWeight:600 }}>
                 {ev.type.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase())}
               </div>
-              <div style={{ fontSize:9, color:"#444" }}>
+              <div style={{ fontSize:9, color:"#a0a0a0" }}>
                 {ev.time}′
               </div>
             </div>
@@ -551,7 +551,7 @@ export default function App() {
               <button key={l.id} onClick={()=>setLeague(l.id)}
                 style={{ background:"transparent", border:"none",
                   borderBottom: league===l.id?"2px solid #e81020":"2px solid transparent",
-                  color: league===l.id?"#fff":"#444",
+                  color: league===l.id?"#fff":"#a0a0a0",
                   padding:"7px 13px 9px", cursor:"pointer",
                   fontSize:12, fontWeight:600, whiteSpace:"nowrap", transition:"all 0.12s" }}>
                 {l.flag} {l.label}
@@ -572,9 +572,9 @@ export default function App() {
             <div style={{ fontSize:12, fontWeight:600, color:"#555" }}>
               <span style={{ color:"#888" }}>{dateLabel}</span>
               {" · "}
-              <span style={{ color:"#444" }}>{leagueLabel}</span>
+              <span style={{ color:"#a0a0a0" }}>{leagueLabel}</span>
               {!loading&&games.length>0&&(
-                <span style={{ color:"#333" }}> · {games.length} match{games.length!==1?"es":""}</span>
+                <span style={{ color:"#a0a0a0" }}> · {games.length} match{games.length!==1?"es":""}</span>
               )}
             </div>
             <div style={{ flex:1 }}/>
@@ -605,7 +605,7 @@ export default function App() {
           ) : error ? (
             <div style={{ textAlign:"center", padding:"56px 0" }}>
               <div style={{ fontSize:34, marginBottom:12 }}>⚠️</div>
-              <div style={{ color:"#555", fontSize:13 }}>ESPN API error: {error}</div>
+              <div style={{ color:"#a0a0a0", fontSize:13 }}>ESPN API error: {error}</div>
               <button onClick={()=>fetchGames(league,date)}
                 style={{ marginTop:14, background:"rgba(255,255,255,0.06)",
                   border:"1px solid rgba(255,255,255,0.1)", color:"#aaa",
@@ -643,9 +643,9 @@ export default function App() {
               background:"rgba(255,255,255,0.012)", border:"1px solid rgba(255,255,255,0.03)",
               display:"flex", gap:9, alignItems:"flex-start" }}>
               <span style={{ fontSize:16, flexShrink:0 }}>💡</span>
-              <div style={{ fontSize:11, color:"#2d2d45", lineHeight:1.7 }}>
+              <div style={{ fontSize:11, color:"#a0a0a0", lineHeight:1.7 }}>
                 Heat maps show real event data from ESPN — goal minutes, cards & substitution times.{" "}
-                <strong style={{ color:"#444" }}>No scores are ever shown.</strong>{" "}
+                <strong style={{ color:"#a0a0a0" }}>No scores are ever shown.</strong>{" "}
                 Click any finished match to see the full minute-by-minute breakdown.
               </div>
             </div>
